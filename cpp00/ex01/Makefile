@@ -27,7 +27,9 @@ DATE = 24 - 04 - 2022
 CPP_FILES = main.cpp PhoneBook.cpp Contact.cpp
 
 # Object Files
-OBJ_NAME = ${CPP_FILES:%.cpp=%.o}
+OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
+
+OBJ_DIR = objs/
 
 cnt := 0
 
@@ -42,13 +44,17 @@ NAME = phonebook
 
 all: header $(NAME) footer
 
-$(NAME): nothing $(OBJ_NAME)
+$(NAME): nothing $(OBJ_DIR) $(OBJ_NAME)
 	@$(CXX) $(OBJ_NAME) -o $(NAME)
-	@echo "\n\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)Executable File Is Ready\n$(NO_COLOR)"
+	@echo "\n\r\033[3A\033[0K\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)Executable File Is Ready\n$(NO_COLOR)"
 
 nothing:
+	@echo "\n\n"
 
-%.o : %.cpp
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
+
+$(OBJ_DIR)%.o : %.cpp
 	@echo "\n\r\033[3A\033[0K\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)generating $@\n$(NO_COLOR)"
 	@$(CXX) ${CXX_FLAGS} -c $< -o $@
 
@@ -90,20 +96,18 @@ footer:
 	@echo "$(BYELLOW)⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡⚡$(NO_COLOR)"
 
 clean_o_files:
-	@rm -rf $(OBJ_NAME)
+	@rm -rf $(OBJ_DIR)
 	@echo "\n\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)object files are Deleted\n$(NO_COLOR)"
 
 clean_exec_file:
 	@rm -rf $(NAME)
 	@echo "\n\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)Executable file is Deleted\n$(NO_COLOR)"
 
-print_2_lines:
-	@echo "\n\n"
 
 clean: header clean_o_files footer
 
 fclean: header clean_o_files clean_exec_file footer
 
-re: header clean_o_files clean_exec_file print_2_lines $(NAME) footer
+re: header clean_o_files clean_exec_file $(NAME) footer
 
 .PHONY: all clean fclean re
