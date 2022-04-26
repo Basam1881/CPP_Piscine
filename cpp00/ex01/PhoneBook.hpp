@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:24 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/25 17:19:53 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/26 23:23:55 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ class PhoneBook
 	public:
 
 		PhoneBook();
-		PhoneBook( PhoneBook const & src );
 		~PhoneBook();
 
 		std::string		FirstName;
@@ -35,18 +34,22 @@ class PhoneBook
 		int				ContactId;
 		void			addContact(void);
 		void			displayContact(void);
-
-		PhoneBook &		operator=( PhoneBook const & rhs );
+		void			display_all(void);
+		int				loop_flag;
 
 	private:
-		int		ContactsNum;
-		int		ContactsMax;
-		int		ContactsIndex;
-		void	store(void);
-		Contact	Contacts[8];
+		int			ContactsNum;
+		int			ContactsMax;
+		int			ContactsIndex;
+		void		store(void);
+		void		display_field(int i);
+		int			string_is_digit(std::string, int flag);
+		std::string	enter_field(int flag);
+		Contact		Contacts[8];
 
 };
 
-std::ostream &			operator<<( std::ostream & o, PhoneBook const & i );
-
 #endif /* ******************************************************* PHONEBOOK_H */
+
+
+PhoneBook myP();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:37 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/25 11:19:50 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/26 12:44:51 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ class Contact
 
 	public:
 		Contact();
-		Contact( Contact const & src );
 		~Contact();
 		std::string getFirstName(void) const;
 		std::string getLastName(void) const;
@@ -34,8 +33,6 @@ class Contact
 		void SetPhoneNumber(std::string str);
 		void SetDarkestSecret(std::string str);
 
-		Contact &		operator=( Contact const & rhs );
-
 	private:
 		std::string		FirstName;
 		std::string		LastName;
@@ -44,7 +41,5 @@ class Contact
 		std::string		DarkestSecret;
 
 };
-
-std::ostream &			operator<<( std::ostream & o, Contact const & i );
 
 #endif /* ********************************************************* CONTACT_H */

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 19:32:12 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/25 19:32:12 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/26 12:49:57 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 */
 
 Account::Account()
-{
-}
-
-Account::Account( const Account & src )
 {
 }
 
@@ -37,22 +33,6 @@ Account::~Account()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-Account &				Account::operator=( Account const & rhs )
-{
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
-	return *this;
-}
-
-std::ostream &			operator<<( std::ostream & o, Account const & i )
-{
-	//o << "Value = " << i.getValue();
-	return o;
-}
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
