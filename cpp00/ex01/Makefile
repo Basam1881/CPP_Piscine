@@ -37,7 +37,7 @@ cnt := 0
 CXX = g++
 
 # Compilation flags
-CXX_FLAGS = -Wall -Wextra -Werror
+CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
 NAME = phonebook

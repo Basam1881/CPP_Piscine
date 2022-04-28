@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:12 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/28 13:12:08 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/28 15:48:17 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,11 @@ void	PhoneBook::display_all(void) {
 			std::getline(std::cin, this->index);
 			if (this->index[0] && this->string_is_digit(this->index, 0)) {
 				this->ContactId = std::stoi(this->index);
-				this->displayContact();
+				std::cout << "FirstName: " << this->Contacts[this->ContactId].getFirstName() << std::endl;
+				std::cout << "LastName: " << this->Contacts[this->ContactId].getLastName() << std::endl;
+				std::cout << "NickName: " << this->Contacts[this->ContactId].getNickName() << std::endl;
+				std::cout << "PhoneNumber: " << this->Contacts[this->ContactId].getPhoneNumber() << std::endl;
+				std::cout << "Darkest Secret: " << this->Contacts[this->ContactId].getDarkestSecret() << std::endl;
 				break ;
 			}
 			if (!std::getline(std::cin, this->index)) {

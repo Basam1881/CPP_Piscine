@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:43 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/25 17:21:10 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/28 16:12:47 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ Contact::Contact()
 {
 }
 
-// Contact::Contact( const Contact & src )
-// {
-// }
-
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -37,21 +32,6 @@ Contact::~Contact()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-// Contact &				Contact::operator=( Contact const & rhs )
-// {
-	//if ( this != &rhs )
-	//{
-		//this->_value = rhs.getValue();
-	//}
-// 	return *this;
-// }
-
-// std::ostream &			operator<<( std::ostream & o, Contact const & i )
-// {
-	//o << "Value = " << i.getValue();
-// 	return o;
-// }
 
 
 /*
