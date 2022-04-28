@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:12 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/26 23:24:45 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/28 13:12:08 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ PhoneBook::~PhoneBook()
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-int	PhoneBook::string_is_digit(std::string str, int flag) {
+int	PhoneBook::string_is_digit(std::string str, int flag) const {
 	if (!flag && str.find_first_not_of("0123456789") == std::string::npos)
 		return (1);
 	else if (flag == 1 && str.find_first_not_of("0123456789") == std::string::npos)
@@ -57,7 +57,7 @@ void	PhoneBook::store(void) {
 	this->Contacts[this->ContactsIndex].SetDarkestSecret(this->DarkestSecret);
 }
 
-void	PhoneBook::display_field(int i) {
+void	PhoneBook::display_field(int i) const {
 	std::string	tmp;
 
 	std::cout << std::setw(10) << i << "|";
@@ -96,7 +96,7 @@ std::string	PhoneBook::enter_field(int flag) {
 			break ;
 		}
 		i = 0;
-		while (1) {
+		while (true) {
 			i = str.find_first_of("\t\v\r\f\n", i);
 			if (i != std::string::npos)
 				str.erase(i, 1);	
@@ -134,14 +134,21 @@ void	PhoneBook::display_all(void) {
 			this->display_field(i);
 		}
 		std::cout << "---------- ---------- ---------- ----------" << std::endl;
-		std::cout << "Enter Contact's ID: ";
-		std::getline(std::cin, this->index);
-		if (this->index[0] && this->string_is_digit(this->index, 0)) {
-			this->ContactId = std::stoi(this->index);
-			this->displayContact();
+		while (this->loop_flag)
+		{
+			std::cout << "Enter Contact's ID: ";
+			std::getline(std::cin, this->index);
+			if (this->index[0] && this->string_is_digit(this->index, 0)) {
+				this->ContactId = std::stoi(this->index);
+				this->displayContact();
+				break ;
+			}
+			if (!std::getline(std::cin, this->index)) {
+				std::cout << std::endl;
+				this->loop_flag = 0;
+				break ;
+			}
 		}
-		else
-			std::cout << "Invalid Input: input should contain digits only (without whitespaces)" << std::endl;
 	}
 	else
 		std::cout << "There are no contacts to search for yet!" << std::endl;
@@ -149,7 +156,7 @@ void	PhoneBook::display_all(void) {
 
 
 
-void	PhoneBook::displayContact(void) {
+void	PhoneBook::displayContact(void) const {
 	if (this->ContactId >= 0 && this->ContactId < this->ContactsMax) {
 		if (this->ContactId <= this->ContactsNum) {
 			this->display_field(this->ContactId);

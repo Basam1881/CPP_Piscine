@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:24 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/26 23:23:55 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/28 13:09:05 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class PhoneBook
 		std::string		index;
 		int				ContactId;
 		void			addContact(void);
-		void			displayContact(void);
+		void			displayContact(void) const;
 		void			display_all(void);
 		int				loop_flag;
 
@@ -42,8 +42,8 @@ class PhoneBook
 		int			ContactsMax;
 		int			ContactsIndex;
 		void		store(void);
-		void		display_field(int i);
-		int			string_is_digit(std::string, int flag);
+		void		display_field(int i) const;
+		int			string_is_digit(std::string, int flag) const;
 		std::string	enter_field(int flag);
 		Contact		Contacts[8];
 
