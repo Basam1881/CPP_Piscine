@@ -31,10 +31,8 @@ OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
 
 OBJ_DIR = objs/
 
-cnt := 0
-
-# Compuliation command
-CXX = g++
+# Compiliation command
+CXX = c++
 
 # Compilation flags
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98

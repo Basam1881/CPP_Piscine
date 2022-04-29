@@ -31,7 +31,7 @@ CPP_FILES = megaphone.cpp
 OBJ_NAME = ${CPP_FILES:%.cpp=%.o}
 
 # Compuliation command
-CXX = g++
+CXX = c++
 
 # Compilation flags
 CXX_FLAGS = -Wall -Wextra -Werror
