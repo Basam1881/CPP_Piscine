@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 21:41:38 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 23:21:38 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:28:26 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,10 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-HumanA::HumanA(std::string name, Weapon &weapon) {
-	this->name = name;
-	this->weapon = weapon;
-}
-
-HumanA::HumanA( const HumanA & src )
+HumanA::HumanA(std::string name, Weapon &weapon) : _name(name), _weapon(weapon)
 {
 }
+
 
 
 /*
@@ -44,13 +40,13 @@ HumanA::~HumanA()
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	HumanA::attack(void) const {
+	std::cout << this->_name << " attacks with their " << this->_weapon.getType() << std::endl;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-void	HumanA::attack(void) const {
-	std::cout << this->name << " attacks with their " << weapon.getType() << std::endl;
-}
 
 /* ************************************************************************** */

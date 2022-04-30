@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 21:41:07 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 23:17:05 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:27:34 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Weapon::Weapon(std::string type)
-{
-}
-
-Weapon::Weapon( const Weapon & src )
+Weapon::Weapon(std::string type) : _type(type)
 {
 }
 
@@ -48,7 +44,7 @@ Weapon::~Weapon()
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string		Weapon::getType(void) const { return (this->type); }
+std::string		Weapon::getType(void) const { return (this->_type); }
 
-void			Weapon::setType(std::string type) { this->type = type; }
+void			Weapon::setType(std::string type) { this->_type = type; }
 /* ************************************************************************** */

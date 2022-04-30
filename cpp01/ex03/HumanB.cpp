@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 21:41:31 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 22:27:36 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:27:24 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-HumanB::HumanB(std::string name)
-{
-	this->name = name;
-}
-
-HumanB::HumanB( const HumanB & src )
+HumanB::HumanB(std::string name) : _name(name)
 {
 }
 
@@ -34,27 +29,21 @@ HumanB::~HumanB()
 {
 }
 
-
-/*
-** --------------------------------- OVERLOAD ---------------------------------
-*/
-
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
 
+void	HumanB::attack(void) const {
+	std::cout << this->_name << " attacks with their " << this->_weapon->getType() << std::endl;
+}
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-void	HumanB::attack(void) const {
-	std::cout << this->name << " attacks with their " << weapon.getType() << std::endl;
-}
-
-void		HumanB::setWeapon(Weapon weapon) {
-	this->weapon.setType(weapon.getType());
+void		HumanB::setWeapon(Weapon &weapon)
+{
+	this->_weapon = &weapon;
 }
 
 /* ************************************************************************** */

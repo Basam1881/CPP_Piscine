@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 21:41:18 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 23:17:01 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:26:26 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ class Weapon
 	public:
 
 		Weapon(std::string type);
-		Weapon( Weapon const & src );
 		~Weapon();
 
 		std::string		getType(void) const;
 		void			setType(std::string type);
 
 	private:
-		std::string		type;
+		std::string		_type;
 };
 
 

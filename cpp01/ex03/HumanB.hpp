@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 21:41:25 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 22:24:22 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/04/30 23:23:04 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class HumanB
 		~HumanB();
 
 		void		attack(void) const;
-		void		setWeapon(Weapon weapon);
+		void		setWeapon(Weapon &weapon);
 
 	private:
-		std::string		name;
-		Weapon			weapon;
+		std::string		_name;
+		Weapon 			*_weapon;
 
 };
 
