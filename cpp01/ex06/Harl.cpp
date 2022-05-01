@@ -62,13 +62,15 @@ void	Harl::complain(std::string level) {
 	};
 
 	int		i = -1;
+	int		flag = 0;
 	while (_CFuncs[++i]) {
-		if (!level.compare(levels[i])) {
+		if (!level.compare(levels[i]) || flag) {
 			(this->*_CFuncs[i])();
-			return ;
+			flag = 1;
 		}
 	}
-	this->_invalid();
+	if (!flag)
+		this->_invalid();
 
 }
 
