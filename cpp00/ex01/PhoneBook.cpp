@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 02:01:12 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/28 15:48:17 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/01 19:11:58 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Contact.hpp"
 #include <iomanip>
 #include <iostream>
-#include <string.h>
+#include <stdlib.h>
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -139,7 +139,7 @@ void	PhoneBook::display_all(void) {
 			std::cout << "Enter Contact's ID: ";
 			std::getline(std::cin, this->index);
 			if (this->index[0] && this->string_is_digit(this->index, 0)) {
-				this->ContactId = std::stoi(this->index);
+				this->ContactId = atoi(this->index.c_str());
 				std::cout << "FirstName: " << this->Contacts[this->ContactId].getFirstName() << std::endl;
 				std::cout << "LastName: " << this->Contacts[this->ContactId].getLastName() << std::endl;
 				std::cout << "NickName: " << this->Contacts[this->ContactId].getNickName() << std::endl;
