@@ -58,17 +58,21 @@ void	Harl::complain(std::string level) {
 		&Harl::_info,
 		&Harl::_warning,
 		&Harl::_error,
+		&Harl::_invalid,
 		NULL
 	};
 
 	int		i = -1;
 	while (_CFuncs[++i]) {
+		if (!_CFuncs[i + 1]) {
+			(this->*_CFuncs[i])();
+			return ;
+		}
 		if (!level.compare(levels[i])) {
 			(this->*_CFuncs[i])();
 			return ;
 		}
 	}
-	this->_invalid();
 
 }
 

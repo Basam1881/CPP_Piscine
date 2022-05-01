@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Harl::Harl()
+Harl::Harl(std::string level) : _level(level), _is_allowed(0)
 {
 }
 
@@ -58,20 +58,24 @@ void	Harl::complain(std::string level) {
 		&Harl::_info,
 		&Harl::_warning,
 		&Harl::_error,
+		&Harl::_invalid,
 		NULL
 	};
 
 	int		i = -1;
-	int		flag = 0;
 	while (_CFuncs[++i]) {
-		if (!level.compare(levels[i]) || flag) {
+		if (!_CFuncs[i + 1]) {
 			(this->*_CFuncs[i])();
-			flag = 1;
+			return ;
+		}
+		if (!level.compare(levels[i]) && !level.compare(this->_level))
+			this->_is_allowed = 1;
+		if (!level.compare(levels[i])) {
+			if (this->_is_allowed)
+				(this->*_CFuncs[i])();
+			return ;
 		}
 	}
-	if (!flag)
-		this->_invalid();
-
 }
 
 /*

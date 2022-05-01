@@ -38,7 +38,7 @@ CXX = c++
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
-NAME = harl
+NAME = harlFilter
 
 all: header $(NAME) footer
 

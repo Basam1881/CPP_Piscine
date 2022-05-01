@@ -18,7 +18,7 @@ class Harl
 
 	public:
 
-		Harl();
+		Harl(std::string level);
 		Harl( Harl const & src );
 		~Harl();
 
@@ -30,6 +30,8 @@ class Harl
 		void		_warning();
 		void		_error();
 		void		_invalid();
+		std::string	_level;
+		int			_is_allowed;
 };
 
 typedef void	(Harl::*complainFuncs)();
