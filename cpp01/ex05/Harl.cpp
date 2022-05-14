@@ -46,11 +46,9 @@ void	Harl::_error() {
 	std::cout << WHITE << "This is unacceptable! I want to speak to the manager now." << RESET << std::endl;
 }
 
-void	Harl::_invalid() {
-	std::cout << PURPLE << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
-}
-
-void	Harl::complain(std::string level) {
+void	Harl::complain(std::string const & level) {
+	if (level.empty())
+		return ;
 	std::string		levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	complainFuncs _CFuncs[] = 
 	{
@@ -58,16 +56,11 @@ void	Harl::complain(std::string level) {
 		&Harl::_info,
 		&Harl::_warning,
 		&Harl::_error,
-		&Harl::_invalid,
 		NULL
 	};
 
 	int		i = -1;
 	while (_CFuncs[++i]) {
-		if (!_CFuncs[i + 1]) {
-			(this->*_CFuncs[i])();
-			return ;
-		}
 		if (!level.compare(levels[i])) {
 			(this->*_CFuncs[i])();
 			return ;

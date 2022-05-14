@@ -4,7 +4,7 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Harl::Harl(std::string level) : _level(level), _is_allowed(0)
+Harl::Harl(std::string level) : _level(level)
 {
 }
 
@@ -46,11 +46,9 @@ void	Harl::_error() {
 	std::cout << WHITE << "This is unacceptable! I want to speak to the manager now." << RESET << std::endl;
 }
 
-void	Harl::_invalid() {
-	std::cout << PURPLE << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
-}
-
 void	Harl::complain(std::string level) {
+	if (level.empty())
+		return ;
 	std::string		levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	complainFuncs _CFuncs[] = 
 	{
@@ -58,23 +56,23 @@ void	Harl::complain(std::string level) {
 		&Harl::_info,
 		&Harl::_warning,
 		&Harl::_error,
-		&Harl::_invalid,
 		NULL
 	};
-
 	int		i = -1;
-	while (_CFuncs[++i]) {
-		if (!_CFuncs[i + 1]) {
-			(this->*_CFuncs[i])();
-			return ;
-		}
-		if (!level.compare(levels[i]) && !level.compare(this->_level))
-			this->_is_allowed = 1;
-		if (!level.compare(levels[i])) {
-			if (this->_is_allowed)
-				(this->*_CFuncs[i])();
-			return ;
-		}
+	while (level.compare(levels[++i]));
+	switch (i)
+	{
+		case DEBUG:
+			(this->*_CFuncs[0])();
+		case INFO:
+			(this->*_CFuncs[1])();
+		case WARNING:
+			(this->*_CFuncs[2])();
+		case ERROR:
+			(this->*_CFuncs[3])();
+		
+		default:
+			break;
 	}
 }
 

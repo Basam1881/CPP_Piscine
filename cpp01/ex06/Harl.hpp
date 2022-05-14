@@ -29,12 +29,16 @@ class Harl
 		void		_info();
 		void		_warning();
 		void		_error();
-		void		_invalid();
 		std::string	_level;
-		int			_is_allowed;
 };
 
 typedef void	(Harl::*complainFuncs)();
 
+enum COMPLAINS {
+	DEBUG,
+	INFO,
+	WARNING,
+	ERROR
+};
 
 #endif /* ************************************************************ HARL_H */

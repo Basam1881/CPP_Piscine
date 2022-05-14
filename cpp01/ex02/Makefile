@@ -43,7 +43,7 @@ NAME = brain
 all: header $(NAME) footer
 
 $(NAME): nothing $(OBJ_DIR) $(OBJ_NAME)
-	@$(CXX) $(OBJ_NAME) -o $(NAME)
+	@$(CXX) ${CXX_FLAGS} $(OBJ_NAME) -o $(NAME)
 	@echo "\n\r\033[3A\033[0K\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)Executable File Is Ready\n$(NO_COLOR)"
 
 nothing:

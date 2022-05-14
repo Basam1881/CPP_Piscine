@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:33:08 by bnaji             #+#    #+#             */
-/*   Updated: 2022/04/29 21:14:42 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/14 17:59:03 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class Zombie
 		~Zombie();
 		Zombie* newZombie(std::string name);
 		void randomChump(std::string name);
+		void			announce(void);
 
 
 	private:
 		std::string		name;
-		void			announce(void);
 
 };
 

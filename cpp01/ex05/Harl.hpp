@@ -22,14 +22,13 @@ class Harl
 		Harl( Harl const & src );
 		~Harl();
 
-		void		complain(std::string level);
+		void		complain(std::string const & level);
 
 	private:
 		void		_debug();
 		void		_info();
 		void		_warning();
 		void		_error();
-		void		_invalid();
 };
 
 typedef void	(Harl::*complainFuncs)();
