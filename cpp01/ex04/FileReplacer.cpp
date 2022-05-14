@@ -8,8 +8,8 @@ FileReplacer::FileReplacer(char *fileName, char *s1, char *s2) : _fileName(fileN
 {
 	this->success = 0;
 	this->_invalidFiles = 0;
-	this->_mainFile.open(fileName);
-	if (!this->_mainFile) {
+	this->_mainFile.open(fileName, std::fstream::in | std::fstream::out);
+	if (!this->_mainFile || _s1.empty()) {
 		this->_invalidFiles = 1;
 		return ;
 	}

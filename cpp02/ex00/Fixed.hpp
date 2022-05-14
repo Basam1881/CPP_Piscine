@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 21:41:18 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/14 19:13:26 by bnaji            ###   ########.fr       */
+/*   Created: 2022/05/10 19:00:35 by bnaji             #+#    #+#             */
+/*   Updated: 2022/05/11 15:05:32 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#ifndef FIXED_HPP
+# define FIXED_HPP
 
 # include <iostream>
-# include <string>
 
-class Weapon
+class Fixed
 {
 
 	public:
 
-		Weapon(std::string type);
-		~Weapon();
+		Fixed();
+		Fixed( Fixed const & src );
+		~Fixed();
 
-		std::string const &		getType(void) const;
-		void					setType(std::string type);
+		int		getRawBits( void ) const;
+		void	setRawBits( int const raw );
+
+		Fixed &		operator=( Fixed const & rhs );
 
 	private:
-		std::string		_type;
+	int					_num;
+	static const int	_fb;
+
 };
 
-
-#endif /* ********************************************************** WEAPON_H */
+#endif /* *********************************************************** FIXED_H */

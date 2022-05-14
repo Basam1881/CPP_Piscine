@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/29 21:41:07 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/14 19:13:50 by bnaji            ###   ########.fr       */
+/*   Created: 2022/05/10 19:00:26 by bnaji             #+#    #+#             */
+/*   Updated: 2022/05/12 13:09:25 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "Fixed.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Weapon::Weapon(std::string type) : _type(type)
+Fixed::Fixed() : _num(0)
 {
+	std::cout << "Default constructor called\n";
+}
+
+Fixed::Fixed( const Fixed & src )
+{
+	std::cout << "Copy constructor called\n";
+	*this = src;
 }
 
 
@@ -25,14 +32,26 @@ Weapon::Weapon(std::string type) : _type(type)
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Weapon::~Weapon()
+Fixed::~Fixed()
 {
+	std::cout << "Destructor called\n";
 }
 
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
+
+Fixed &				Fixed::operator=( Fixed const & rhs )
+{
+	std::cout << "Copy assignment operator called\n";
+
+	if ( this != &rhs )
+	{
+		this->_num = rhs.getRawBits();
+	}
+	return *this;
+}
 
 
 /*
@@ -44,7 +63,16 @@ Weapon::~Weapon()
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string	const &		Weapon::getType(void) const { return (this->_type); }
+int		Fixed::getRawBits(void) const {
+	std::cout << "getRawBits member function called\n";
+	return (this->_num);
+}
 
-void					Weapon::setType(std::string type) { this->_type = type; }
+void	Fixed::setRawBits( int const raw ) {
+	std::cout << "setRawBits member function called\n";
+	this->_num = raw;
+}
+
+const int		Fixed::_fb = 8;
+
 /* ************************************************************************** */
