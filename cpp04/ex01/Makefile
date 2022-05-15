@@ -24,7 +24,7 @@ PROJECT_NAME = Cpp00/ex00
 # Starting Date of the project
 DATE = 24 - 04 - 2022
 
-CPP_FILES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+CPP_FILES = main.cpp Animals.cpp Dog.cpp Cat.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
@@ -38,7 +38,7 @@ CXX = c++
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
-NAME = claptrap
+NAME = animals
 
 all: header $(NAME) footer
 
@@ -59,26 +59,26 @@ $(OBJ_DIR)%.o : %.cpp
 header:
 	@printf "\n%b" "$(NO_COLOR)"
 	@echo
-	@echo "$(BGBLUE)\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌ ▐░░░░░░░░░▌ ▐░░░░░░░░░░░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█░█▀▀▀▀▀█░▌ ▀▀▀▀▀▀▀▀▀█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌▐░▌    ▐░▌          ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░▌          ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▌   ▐░▌ ▄▄▄▄▄▄▄▄▄█░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄   ▄         ▄ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌ ▐░░░░░░░░░▌ ▐░▌       ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀█░▌▐░█▀▀▀▀▀▀▀█░▌▐░█░█▀▀▀▀▀█░▌▐░▌       ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░▌          ▐░▌       ▐░▌▐░▌       ▐░▌▐░▌▐░▌    ▐░▌▐░▌       ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░▌          ▐░█▄▄▄▄▄▄▄█░▌▐░█▄▄▄▄▄▄▄█░▌▐░▌ ▐░▌   ▐░▌▐░█▄▄▄▄▄▄▄█░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t▐░▌          ▐░░░░░░░░░░░▌▐░░░░░░░░░░░▌▐░▌  ▐░▌  ▐░▌▐░░░░░░░░░░░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t▐░▌          ▐░█▀▀▀▀▀▀▀▀▀ ▐░█▀▀▀▀▀▀▀▀▀ ▐░▌   ▐░▌ ▐░▌ ▀▀▀▀▀▀▀▀▀█░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t▐░▌          ▐░▌          ▐░▌          ▐░▌    ▐░▌▐░▌          ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌          ▐░█▄▄▄▄▄█░█░▌ ▄▄▄▄▄▄▄▄▄█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t▐░░░░░░░░░░░▌▐░▌          ▐░▌           ▐░░░░░░░░░▌ ▐░░░░░░░░░░░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀             ▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀▀▀ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄       ▄  ▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌▐░░░░░░░░░░░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀  ▐░▌   ▐░▌▐░█░█▀▀▀▀▀█░ ▀▀▀▀▀▀▀▀▀█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌▐░▌    ▐░          ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄    ▐░▐░▌  ▐░▌ ▐░▌   ▐░          ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌    ▐░▌   ▐░▌  ▐░▌  ▐░ ▄▄▄▄▄▄▄▄▄█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀    ▐░▌░▌  ▐░▌   ▐░▌ ▐░▐░░░░░░░░░░░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌    ▐░▌▐░▐░█▀▀▀▀▀▀▀▀▀ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄  ▐░▌   ▐░▌▐░█▄▄▄▄▄█░█░▐░█▄▄▄▄▄▄▄▄▄ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌          ▐░█▄▄▄▄▄█░█░▌          ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t▐░░░░░░░░░░░▌▐░▌          ▐░▌           ▐░░░░░░░░░▌           ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀             ▀▀▀▀▀▀▀▀▀             ▀ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄       ▄  ▄▄▄▄▄▄▄▄▄     ▄▄▄▄     $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌  ▄█░░░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀  ▐░▌   ▐░▌▐░█░█▀▀▀▀▀█░ ▐░░▌▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌▐░▌    ▐░  ▀▀ ▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄    ▐░▐░▌  ▐░▌ ▐░▌   ▐░     ▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌    ▐░▌   ▐░▌  ▐░▌  ▐░     ▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀    ▐░▌░▌  ▐░▌   ▐░▌ ▐░     ▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌    ▐░▌▐░     ▐░░▌    $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄  ▐░▌   ▐░▌▐░█▄▄▄▄▄█░█░ ▄▄▄▄█░░█▄▄▄ $(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌▐░░░░░░░░░░░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀       ▀  ▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ $(NO_COLOR)"
 	@echo
