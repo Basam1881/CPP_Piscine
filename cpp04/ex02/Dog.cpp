@@ -1,30 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                        :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/15 22:34:22 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 23:18:18 by bnaji            ###   ########.fr       */
+/*   Created: 2022/05/15 22:34:42 by bnaji             #+#    #+#             */
+/*   Updated: 2022/05/16 12:48:42 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Dog.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Animal::Animal() : _type("UNKNOWN")
+Dog::Dog()
 {
-	std::cout << "UNKOWN animal is created" << std::endl;
+	this->_type = "Dog";
+	this->_brain = new Brain();
+	std::cout << this->_type << " is created" << std::endl;
 }
 
-Animal::Animal( const Animal & src )
-{
+Dog::Dog( const Dog & src ) : AAnimal(src)
+{	
 	this->_type = src.getType();
-	std::cout << "UNKNOWN animal is created as " << this->_type << std::endl;
+	this->_brain = new Brain();
+	for (int i = 0; i < 100; i++) {
+		if (src.getBrain()->getIdea(i).empty())
+			break ;
+		this->_brain->setIdea(src.getBrain()->getIdea(i), i);
+	}
+	std::cout << this->_type << " is created as " << this->_type << std::endl;
 }
 
 
@@ -32,9 +40,10 @@ Animal::Animal( const Animal & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Animal::~Animal()
+Dog::~Dog()
 {
-	std::cout << "UNKNOWN animal is died" << std::endl;
+	delete this->_brain;
+	std::cout << this->_type << " is died" << std::endl;
 }
 
 
@@ -42,7 +51,7 @@ Animal::~Animal()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Animal &				Animal::operator=( Animal const & rhs )
+Dog &				Dog::operator=( Dog const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -51,9 +60,9 @@ Animal &				Animal::operator=( Animal const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Animal const & i )
+std::ostream &			operator<<( std::ostream & o, Dog const & i )
 {
-	o << i.getType() << " animal";
+	o << i.getType();
 	return o;
 }
 
@@ -62,16 +71,16 @@ std::ostream &			operator<<( std::ostream & o, Animal const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Animal::makeSound() {
-	std::cout << this->_type << " does not exist!!" << std::endl;
+void				Dog::makeSound() {
+	std::cout << this->_type << ": Bark Bark on a f***ing jerk" << std::endl;
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string const &			Animal::getType() const { return (this->_type); }
+Brain const * 			Dog::getBrain() const { return (this->_brain); }
 
-void						Animal::setType(std::string type) { this->_type = type; }
+void					Dog::setBrain(Brain * brain) { this->_brain = brain; }
 
 /* ************************************************************************** */

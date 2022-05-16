@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                        :+:      :+:    :+:   */
+/*   AAnimal.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 22:34:22 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 23:18:18 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/16 12:50:52 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Animal::Animal() : _type("UNKNOWN")
+AAnimal::AAnimal() : _type("UNKNOWN")
 {
 	std::cout << "UNKOWN animal is created" << std::endl;
 }
 
-Animal::Animal( const Animal & src )
+AAnimal::AAnimal( const AAnimal & src )
 {
 	this->_type = src.getType();
 	std::cout << "UNKNOWN animal is created as " << this->_type << std::endl;
@@ -32,7 +32,7 @@ Animal::Animal( const Animal & src )
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Animal::~Animal()
+AAnimal::~AAnimal()
 {
 	std::cout << "UNKNOWN animal is died" << std::endl;
 }
@@ -42,7 +42,7 @@ Animal::~Animal()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Animal &				Animal::operator=( Animal const & rhs )
+AAnimal &				AAnimal::operator=( AAnimal const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -51,7 +51,7 @@ Animal &				Animal::operator=( Animal const & rhs )
 	return *this;
 }
 
-std::ostream &			operator<<( std::ostream & o, Animal const & i )
+std::ostream &			operator<<( std::ostream & o, AAnimal const & i )
 {
 	o << i.getType() << " animal";
 	return o;
@@ -62,7 +62,7 @@ std::ostream &			operator<<( std::ostream & o, Animal const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Animal::makeSound() {
+void				AAnimal::makeSound() {
 	std::cout << this->_type << " does not exist!!" << std::endl;
 }
 
@@ -70,8 +70,8 @@ void				Animal::makeSound() {
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-std::string const &			Animal::getType() const { return (this->_type); }
+std::string const &			AAnimal::getType() const { return (this->_type); }
 
-void						Animal::setType(std::string type) { this->_type = type; }
+void						AAnimal::setType(std::string type) { this->_type = type; }
 
 /* ************************************************************************** */

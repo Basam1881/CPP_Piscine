@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 22:34:36 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 10:30:47 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/16 12:48:50 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include <iostream>
 # include <string>
-# include "Animal.hpp"
+# include "AAnimal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal
+class Cat : public AAnimal
 {
 
 	public:
@@ -29,6 +30,13 @@ class Cat : public Animal
 		Cat &		operator=( Cat const & rhs );
 		
 		virtual void				makeSound();
+
+		Brain const *			getBrain() const;
+		void					setBrain(Brain * brain);
+	
+	private:
+		Brain *				_brain;
+	
 };
 
 std::ostream &			operator<<( std::ostream & o, Cat const & i );

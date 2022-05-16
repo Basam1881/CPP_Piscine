@@ -24,7 +24,7 @@ PROJECT_NAME = Cpp00/ex00
 # Starting Date of the project
 DATE = 24 - 04 - 2022
 
-CPP_FILES = main.cpp Animals.cpp Dog.cpp Cat.cpp
+CPP_FILES = main.cpp AAnimal.cpp Dog.cpp Cat.cpp Brain.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
