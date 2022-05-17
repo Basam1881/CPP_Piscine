@@ -46,6 +46,10 @@ void	Harl::_error() {
 	std::cout << WHITE << "This is unacceptable! I want to speak to the manager now." << RESET << std::endl;
 }
 
+void		Harl::_invalid() {
+	std::cout << PURPLE << "[ Probably complaining about insignificant problems ]" << RESET << std::endl;
+}
+
 void	Harl::complain(std::string level) {
 	if (level.empty())
 		return ;
@@ -56,6 +60,7 @@ void	Harl::complain(std::string level) {
 		&Harl::_info,
 		&Harl::_warning,
 		&Harl::_error,
+		&Harl::_invalid,
 		NULL
 	};
 	int		i = -1;
@@ -70,9 +75,9 @@ void	Harl::complain(std::string level) {
 			(this->*_CFuncs[2])();
 		case ERROR:
 			(this->*_CFuncs[3])();
-		
+		break;
 		default:
-			break;
+			(this->*_CFuncs[4])();
 	}
 }
 

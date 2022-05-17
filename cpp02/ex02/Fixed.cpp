@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 19:00:26 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/12 13:07:54 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/17 22:06:12 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed( int const num ) {
 }
 
 Fixed::Fixed( float const num ) {
-	this->_num = round(num * (1 << this->_fb));
+	this->_num = roundf(num * (1 << this->_fb));
 }
 
 Fixed::Fixed( const Fixed & src ) {
@@ -121,7 +121,7 @@ Fixed &				Fixed::operator--( void ) {
 }
 
 Fixed				Fixed::operator--( int ) {
-	this->_num++;
+	this->_num--;
 	return *this;
 }
 

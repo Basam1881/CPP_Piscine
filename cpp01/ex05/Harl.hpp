@@ -29,6 +29,7 @@ class Harl
 		void		_info();
 		void		_warning();
 		void		_error();
+		void		_invalid();
 };
 
 typedef void	(Harl::*complainFuncs)();
