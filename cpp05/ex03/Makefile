@@ -24,7 +24,8 @@ PROJECT_NAME = Cpp00/ex00
 # Starting Date of the project
 DATE = 24 - 04 - 2022
 
-CPP_FILES = main.cpp Bureaucrat.cpp
+CPP_FILES = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp\
+			RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})

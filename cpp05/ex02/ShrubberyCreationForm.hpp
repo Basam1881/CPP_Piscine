@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 19:50:11 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 23:57:00 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/18 12:27:42 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ShrubberyCreationForm : public AForm
 		std::string	const &			getTarget() const;
 		void						setTarget(std::string target);
 
-		virtual void				execute(Bureaucrat const & executor) const;
+		virtual int					execute(Bureaucrat const & executor) const;
 		
 
 	private:

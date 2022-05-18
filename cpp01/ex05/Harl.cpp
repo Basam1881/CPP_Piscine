@@ -68,7 +68,7 @@ void	Harl::complain(std::string const & level) {
 			(this->*_CFuncs[i])();
 			return ;
 		}
-		if (!level.compare(02.[i])) {
+		if (!level.compare(levels[i])) {
 			(this->*_CFuncs[i])();
 			return ;
 		}
