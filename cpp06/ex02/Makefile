@@ -19,12 +19,12 @@ AUTHOR = Bassam
 Intra_Login = Bnaji
 
 # Project Name
-PROJECT_NAME = Cpp04/ex00
+PROJECT_NAME = Cpp05/ex00
 
 # Starting Date of the project
-DATE = 14 - 05 - 2022
+DATE = 15 - 05 - 2022
 
-CPP_FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp
+CPP_FILES = main.cpp 
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
@@ -70,17 +70,17 @@ header:
 	@echo "$(BGBLUE)\t\t▐░█▄▄▄▄▄▄▄▄▄ ▐░▌          ▐░▌          ▐░█▄▄▄▄▄█░█░▌          ▐░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t▐░░░░░░░░░░░▌▐░▌          ▐░▌           ▐░░░░░░░░░▌           ▐░▌$(NO_COLOR)"
 	@echo "$(BGBLUE)\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀            ▀             ▀▀▀▀▀▀▀▀▀             ▀ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄       ▄  ▄▄▄▄▄▄▄▄▄   ▄▄▄▄▄▄▄▄▄  $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌ ▐░░░░░░░░░▌ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀  ▐░▌   ▐░▌▐░█░█▀▀▀▀▀█░▐░█░█▀▀▀▀▀█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌▐░▌    ▐░▐░▌▐░▌    ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄    ▐░▐░▌  ▐░▌ ▐░▌   ▐░▐░▌ ▐░▌   ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌    ▐░▌   ▐░▌  ▐░▌  ▐░▐░▌  ▐░▌  ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀    ▐░▌░▌  ▐░▌   ▐░▌ ▐░▐░▌   ▐░▌ ▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌    ▐░▌▐░▐░▌    ▐░▌▐░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄  ▐░▌   ▐░▌▐░█▄▄▄▄▄█░█░▐░█▄▄▄▄▄█░█░▌$(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌ ▐░░░░░░░░░▌ $(NO_COLOR)"
-	@echo "$(BGBLUE)\t\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀       ▀  ▀▀▀▀▀▀▀▀▀   ▀▀▀▀▀▀▀▀▀  $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t ▄▄▄▄▄▄▄▄▄▄▄  ▄       ▄  ▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌▐░░░░░░░░░░░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀  ▐░▌   ▐░▌▐░█░█▀▀▀▀▀█░ ▀▀▀▀▀▀▀▀▀█░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌▐░▌    ▐░          ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄    ▐░▐░▌  ▐░▌ ▐░▌   ▐░          ▐░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌    ▐░▌   ▐░▌  ▐░▌  ▐░ ▄▄▄▄▄▄▄▄▄█░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▀▀▀▀▀▀▀▀▀    ▐░▌░▌  ▐░▌   ▐░▌ ▐░▐░░░░░░░░░░░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░▌            ▐░▌ ▐░▌ ▐░▌    ▐░▌▐░▐░█▀▀▀▀▀▀▀▀▀ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░█▄▄▄▄▄▄▄▄▄  ▐░▌   ▐░▌▐░█▄▄▄▄▄█░█░▐░█▄▄▄▄▄▄▄▄▄ $(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t▐░░░░░░░░░░░▌▐░▌     ▐░▌▐░░░░░░░░░▌▐░░░░░░░░░░░▌$(NO_COLOR)"
+	@echo "$(BGBLUE)\t\t\t ▀▀▀▀▀▀▀▀▀▀▀  ▀       ▀  ▀▀▀▀▀▀▀▀▀  ▀▀▀▀▀▀▀▀▀▀▀ $(NO_COLOR)"
 	@echo
 	@printf "\t\t\t\t$(LIGHT_GREEN)AUTHORS\t\t:\t$(WHITE)%b\n$(NO_COLOR)" "$(AUTHOR)"
 	@printf "\t\t\t\t$(LIGHT_GREEN)Intra Login\t:\t$(WHITE)%b\n$(NO_COLOR)" "$(Intra_Login)"

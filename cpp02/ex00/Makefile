@@ -19,10 +19,10 @@ AUTHOR = Bassam
 Intra_Login = Bnaji
 
 # Project Name
-PROJECT_NAME = Cpp00/ex00
+PROJECT_NAME = Cpp02/ex00
 
 # Starting Date of the project
-DATE = 24 - 04 - 2022
+DATE = 8 - 05 - 2022
 
 CPP_FILES = main.cpp Fixed.cpp
 
@@ -43,7 +43,7 @@ NAME = fixed
 all: header $(NAME) footer
 
 $(NAME): nothing $(OBJ_DIR) $(OBJ_NAME)
-	@$(CXX) $(OBJ_NAME) -o $(NAME)
+	@$(CXX) ${CXX_FLAGS} $(OBJ_NAME) -o $(NAME)
 	@echo "\n\r\033[3A\033[0K\t$(NO_COLOR)[$(GREEN)✓$(NO_COLOR)]   $(IYELLOW)Executable File Is Ready\n$(NO_COLOR)"
 
 nothing:

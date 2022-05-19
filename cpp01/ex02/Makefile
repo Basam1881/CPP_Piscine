@@ -19,10 +19,10 @@ AUTHOR = Bassam
 Intra_Login = Bnaji
 
 # Project Name
-PROJECT_NAME = Cpp00/ex00
+PROJECT_NAME = Cpp01/ex02
 
 # Starting Date of the project
-DATE = 24 - 04 - 2022
+DATE = 28 - 04 - 2022
 
 CPP_FILES = main.cpp
 
