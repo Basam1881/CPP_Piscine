@@ -24,7 +24,7 @@ PROJECT_NAME = Cpp04/ex01
 # Starting Date of the project
 DATE = 15 - 05 - 2022
 
-CPP_FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+CPP_FILES = main.cpp Serialization.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
@@ -32,13 +32,13 @@ OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
 OBJ_DIR = objs/
 
 # Compiliation command
-CXX = c++
+CXX = g++
 
 # Compilation flags
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
-NAME = animals
+NAME = serial
 
 all: header $(NAME) footer
 

@@ -24,7 +24,7 @@ PROJECT_NAME = Cpp05/ex00
 # Starting Date of the project
 DATE = 15 - 05 - 2022
 
-CPP_FILES = main.cpp 
+CPP_FILES = main.cpp BigMom.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
@@ -38,7 +38,7 @@ CXX = c++
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
-NAME = animals
+NAME = base
 
 all: header $(NAME) footer
 
