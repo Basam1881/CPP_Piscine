@@ -6,25 +6,24 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 16:53:59 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/18 20:02:30 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/20 10:50:30 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
+#include "TypeConverter.hpp"
 
-int main() {
-    std::string str = "123.4567";
-
-    // convert string to float
-    float num_float = std::stof(str);
-
-    // convert string to double
-    double num_double = std::stod(str);
-
-   std:: cout<< "num_float = " << num_float << std::endl;
-   std:: cout<< "num_double = " << num_double << std::endl;
-
+int main(int ac, char **av) {
+    if (ac != 2) {
+        std::cerr << "Invalid Arguments" << std::endl;
+        return (1);
+    }
+    TypeConverter   converter(av[1]);
+    std::string str = av[1];
+    if (converter.storeActualType(str))
+        converter.convert2all();
+    std::cout << converter;
     return 0;
-}
 
+}

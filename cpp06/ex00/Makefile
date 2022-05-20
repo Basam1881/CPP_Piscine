@@ -24,7 +24,7 @@ PROJECT_NAME = Cpp04/ex00
 # Starting Date of the project
 DATE = 14 - 05 - 2022
 
-CPP_FILES = main.cpp Animal.cpp Dog.cpp Cat.cpp
+CPP_FILES = main.cpp TypeConverter.cpp
 
 # Object Files
 OBJ_NAME = $(addprefix $(OBJ_DIR), ${CPP_FILES:%.cpp=%.o})
@@ -38,7 +38,7 @@ CXX = c++
 CXX_FLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Executable file's name
-NAME = animals
+NAME = convert
 
 all: header $(NAME) footer
 
