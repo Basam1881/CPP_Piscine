@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:29 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/22 16:54:55 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 02:46:01 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,11 @@ std::ostream &			operator<<( std::ostream & o, Span const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void						Span::fillSpan(std::vector<int>::iterator it1, std::vector<int>::iterator it2, int n) {
+void						Span::fillSpan(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2) {
 	while (it1 != it2) {
 		try {
-			*it1 = n;
+			std::cout << "it: " << *it1 << std::endl;
+			this->addNumber(*it1);
 			it1++;
 		}
 		catch (Span::IsFullException & e) {
@@ -84,6 +85,7 @@ void						Span::fillSpan(std::vector<int>::iterator it1, std::vector<int>::itera
 
 void						Span::addNumber(int num) {
 	if (this->_span.size() < this->_size) {
+		std::cout << "num: " << num << std::endl;
 		this->_span.push_back(num);
 	}
 	else
@@ -144,5 +146,12 @@ std::vector<int> const &	Span::getSpan() const {
 	return (this->_span);
 }
 
+std::vector<int>::const_iterator	Span::getBegin() const {
+	return (this->_span.begin());
+}
+
+std::vector<int>::const_iterator	Span::getEnd() const {
+	return (this->_span.end());
+}
 
 /* ************************************************************************** */

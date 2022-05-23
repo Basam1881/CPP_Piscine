@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:37 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/22 16:54:44 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 02:41:53 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,13 @@ class Span
 
 		Span &		operator=( Span const & rhs );
 
-		unsigned int const &			getSize() const;
-		std::vector<int> const &	getSpan() const;
+		unsigned int const &							getSize() const;
+		std::vector<int> const &					getSpan() const;
+		std::vector<int>::const_iterator	getBegin() const;
+		std::vector<int>::const_iterator	getEnd() const;
 
 		void						addNumber(int num);
-		void						fillSpan(std::vector<int>::iterator it1, std::vector<int>::iterator it2, int n);
+		void						fillSpan(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2);
 		unsigned int 		shortestSpan();
 		unsigned int 		longestSpan();
 
