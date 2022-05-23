@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 22:34:31 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 11:29:57 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 15:52:47 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ std::ostream &			operator<<( std::ostream & o, Cat const & i )
 */
 
 void				Cat::makeSound() {
-	std::cout << this->_type << ": Meewwww little pussy" << std::endl;
+	std::cout << this->_type << ": Meewwww like a Cat" << std::endl;
 }
 
 /*

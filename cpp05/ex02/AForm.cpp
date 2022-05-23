@@ -28,8 +28,9 @@ AForm::AForm(std::string const name, int const signGrade, int const execGrade) :
 	std::cout << this->_name << " Form is created" << std::endl;
 }
 
-AForm::AForm( const AForm & src ) : _name(src.getName()), _isSigned(src.getIsSigned()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade())
+AForm::AForm( const AForm & src ) : _name(src.getName()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade())
 {
+	*this = src;
 	std::cout << "A copy from " << this->_name << " Form is created" << std::endl;
 }
 
@@ -50,7 +51,10 @@ AForm::~AForm()
 
 AForm &				AForm::operator=( AForm const & rhs )
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+		this->_isSigned = rhs.getIsSigned();
+	}
 	return *this;
 }
 

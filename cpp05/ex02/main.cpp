@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:28:11 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/18 12:25:19 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 08:02:48 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main () {
 	bureaucrat.signForm(form1);
 	bureaucrat.executeForm(form1);
 	bureaucrat.signForm(form2);
-	bureaucrat.executeForm(form2);
-	bureaucrat.executeForm(form2);
+	for (int i = 0; i < 10; i++)
+		bureaucrat.executeForm(form2);
 	bureaucrat.executeForm(form3);
 	bureaucrat.signForm(form3);
 	bureaucrat.executeForm(form3);

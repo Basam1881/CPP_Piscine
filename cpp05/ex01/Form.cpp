@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 20:01:50 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 21:09:16 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 07:20:54 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@ Form::Form(std::string const name, int const signGrade, int const execGrade) : _
 	std::cout << this->_name << " Form is created" << std::endl;
 }
 
-Form::Form( const Form & src ) : _name(src.getName()), _isSigned(src.getIsSigned()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade())
+Form::Form( const Form & src ) : _name(src.getName()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade())
 {
+	*this = src;
 	std::cout << "A copy from " << this->_name << " Form is created" << std::endl;
 }
 
@@ -50,7 +51,10 @@ Form::~Form()
 
 Form &				Form::operator=( Form const & rhs )
 {
-	(void)rhs;
+	if (this != &rhs)
+	{
+		this->_isSigned = rhs.getIsSigned();
+	}
 	return *this;
 }
 

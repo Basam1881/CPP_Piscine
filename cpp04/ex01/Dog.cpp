@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 22:34:42 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 11:28:58 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 15:52:56 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ std::ostream &			operator<<( std::ostream & o, Dog const & i )
 */
 
 void				Dog::makeSound() {
-	std::cout << this->_type << ": Bark Bark on a f***ing jerk" << std::endl;
+	std::cout << this->_type << ": Bark Bark like a Dog" << std::endl;
 }
 
 /*

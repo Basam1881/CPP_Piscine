@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:00:32 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 19:12:41 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 14:18:23 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,15 @@
 
 int main() {
 	ScavTrap goblin("Muazzum");
+	ClapTrap darkKnight("Bassam");
 
+	std::cout << PURPLE << darkKnight << RESET;
+	std::cout << GREEN << goblin << RESET;
+	darkKnight.setAttackDamage(3);
+	darkKnight.attack(goblin.getName());
+	goblin.takeDamage(darkKnight.getAttackDamage());
+	std::cout << GREEN << goblin << RESET;
+	goblin.beRepaired(2);
 	std::cout << GREEN << goblin << RESET;
 	goblin.takeDamage(10);
 	std::cout << GREEN << goblin << RESET;

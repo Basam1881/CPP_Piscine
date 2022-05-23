@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:04:30 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 20:35:07 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 17:44:39 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,7 @@ ClapTrap::ClapTrap(std::string Name) : _name(Name), _hitPoints(10), _energyPoint
 
 ClapTrap::ClapTrap( const ClapTrap & src )
 {
-	this->_name = src._name;
-	this->_hitPoints = src._hitPoints;
-	this->_hitPointsMax = src._hitPointsMax;
-	this->_energyPoints = src._energyPoints;
-	this->_attackDamage = src._attackDamage;
+	*this = src;
 	std::cout << WHITE << this->_name << " Clap has been created as " << src.getName() << RESET << std::endl;
 }
 

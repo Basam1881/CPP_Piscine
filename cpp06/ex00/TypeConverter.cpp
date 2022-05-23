@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   TypeConverter.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:58:16 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/20 10:48:45 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 11:01:07 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,6 +178,7 @@ bool				TypeConverter::_isInt(std::string str) {
 
 bool				TypeConverter::_isFloat(std::string str) {
 	if (str.length() == static_cast<long unsigned int>(this->_strCnt) + 1 && str[this->_strCnt] == 'f') {
+		str.erase(str.end() - 1);
 		std::stringstream s(str);
 		s >> this->_fval;
 		if (this->_fval != static_cast<int>(this->_fval))

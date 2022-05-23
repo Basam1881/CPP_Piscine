@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:14:31 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/18 09:36:32 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 07:54:43 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void					Bureaucrat::signForm(AForm & form) {
 void					Bureaucrat::executeForm(AForm const & form) {
 	if (form.execute(*this))
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
+	else if (!form.getIsSigned())
+		std::cout << this->_name << " couldn't execute " << form.getName() << " form, because it's not signed yet!" << std::endl;
 	else
 		std::cout << this->_name << " couldn't execute "
 				<< form.getName() << " form, because his grade is lower than the required grade to execute the form [ Bureaucrat Grade: "

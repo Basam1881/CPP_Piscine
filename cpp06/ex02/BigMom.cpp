@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BigMom.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 19:51:09 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/20 20:28:41 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 11:23:48 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,10 +127,10 @@ bool					BigMom::testNumBases(int n) {
     std::cout << std::endl << "------------------ " << i + 1 << " ------------------" << std::endl;
     if (this->setBasePtr(this->generate())) {
       this->identify(this->getBasePtr());
-      this->identify(this->getBaseRef());
+      this->identify(*this->getBaseRef());
       delete this->getBasePtr();
       std::cout << std::endl;
-    }
+    } 
   }
 	return true;
 }

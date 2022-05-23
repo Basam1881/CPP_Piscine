@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 16:28:11 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/18 18:55:36 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 08:03:42 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int main () {
 	form[1] = someRandomIntern.makeForm("robotomy request", "home");
 	if (form[1]) {
 		bureaucrat.signForm(*form[1]);
-		bureaucrat.executeForm(*form[1]);
-		bureaucrat.executeForm(*form[1]);
+		for (int i = 0; i < 10; i++)
+			bureaucrat.executeForm(*form[1]);
 	}
 	form[2] = someRandomIntern.makeForm("presidential pardon", "home");
 	if (form[2]) {

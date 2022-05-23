@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 14:42:25 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/21 15:04:52 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:42:04 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "Whatever.hpp"
+#include "whatever.hpp"
 
 int main( void ) {
   int a = 2;

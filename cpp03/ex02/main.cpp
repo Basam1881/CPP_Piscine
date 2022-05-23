@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 10:00:32 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 20:41:33 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 19:38:33 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main() {
 	ScavTrap goblin("Allen");
 	FragTrap robot1("Muazzum");
 	FragTrap robot2(robot1);
+	
 
 	robot2.setName("SAMAD");
 	std::cout << GREEN << goblin << RESET;

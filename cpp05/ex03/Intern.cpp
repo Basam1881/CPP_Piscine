@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 12:23:25 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/18 13:16:00 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 07:53:11 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ AForm *					Intern::makeForm(std::string formName, std::string target) {
 	int i = -1;
 	while (formMaker[++i]) {
 		if (!formName.compare(formNames[i])) {
+			std::cout << "Intern creates " << formNames[i] << " form" << std::endl;
 			return ((this->*formMaker[i])(target));
 		}
 	}

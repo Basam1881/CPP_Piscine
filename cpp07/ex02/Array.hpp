@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:16:18 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/22 00:33:58 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 23:31:27 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Array
 	public:
 
 		Array() : _arr(NULL), _size(1) {
-			this->_arr = new T;
+			this->_arr = new T[1];
 		}
 		Array(unsigned int n) : _arr(NULL), _size(n) {
 			this->_arr = new T[n];
@@ -57,11 +57,14 @@ class Array
 			return (*this->_arr);
 		}
 		Array &		operator=( Array const & rhs ) {
-			this->_size = rhs.size();
-			this->_arr = new T[this->_size];
-			for (unsigned int i = 0; i < this->_size; i++) {
-				this->_arr[i] = rhs.getArray()[i];
-			}
+      if (this != &rhs) {
+        this->_size = rhs.size();
+        delete [] this->_arr;
+        this->_arr = new T[this->_size];
+        for (unsigned int i = 0; i < this->_size; i++) {
+          this->_arr[i] = rhs.getArray()[i];
+        }
+      }
 			return *this;
 		}
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 14:35:17 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/15 19:47:32 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/19 17:43:50 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void				ScavTrap::attack(const std::string& target) {
 }
 
 void				ScavTrap::guardGate() {
-	std::cout << PURPLE << "UNKOWN Scav is now in Gate keeper mode" << std::endl;
+	std::cout << PURPLE << this->_name << " Scav is now in Gate keeper mode" << std::endl;
 }
 
 /*

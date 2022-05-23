@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 16:42:38 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/21 17:03:39 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/23 20:51:26 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void  allX(char & c) {
 }
 
 void  printIntArr(int *a, int n) {
-  std::cout << "a[] = ";
+  std::cout << "[ ";
   for (int i = 0; i < n; i++) {
-    std::cout << a[i] << " ";
+    std::cout << a[i];
+    if (i + 1 != n)
+      std::cout << ", ";
   }
-  std::cout << std::endl;
+  std::cout << " ]" << std::endl;
 }
 
 int main () {
