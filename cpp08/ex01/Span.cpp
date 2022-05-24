@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:29 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/24 09:48:17 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/24 15:45:34 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Span &				Span::operator=( Span const & rhs )
 std::ostream &			operator<<( std::ostream & o, Span const & i )
 {
 	o << "[ ";
-  typename std::vector<int>::const_iterator it;
+  std::vector<int>::const_iterator it;
   for (it = i.getSpan().begin(); it != i.getSpan().end(); it++) {
     o << *(it);
     it++;
@@ -73,7 +73,6 @@ std::ostream &			operator<<( std::ostream & o, Span const & i )
 void						Span::fillSpan(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2) {
 	while (it1 != it2) {
 		try {
-			std::cout << "it: " << *it1 << std::endl;
 			this->addNumber(*it1);
 			it1++;
 		}
@@ -85,10 +84,8 @@ void						Span::fillSpan(std::vector<int>::const_iterator it1, std::vector<int>:
 
 void						Span::addNumber(int num) {
 	try {
-		if (this->_span.size() < this->_size) {
-			std::cout << "num: " << num << std::endl;
+		if (this->_span.size() < this->_size)
 			this->_span.push_back(num);
-		}
 		else
 			throw Span::IsFullException();
 	} catch (IsFullException& e) {
@@ -102,12 +99,13 @@ unsigned int 		Span::shortestSpan() {
 			unsigned int		min = 0;
 			std::vector<int> span = this->_span;
 			std::sort(span.begin(), span.end());
-			std::vector<int>::iterator it2 = span.begin();
-			std::vector<int>::iterator it1 = it2++;
+			std::vector<int>::iterator it = span.begin();
+			std::vector<int>::iterator it1 = it++;
+			std::vector<int>::iterator it2;
 			
-			min = abs(*it2 - *it1);
-			for (it2 = it2; it2 != span.end(); it1++, it2++) 
-				if (abs(*it2 - *it1) < min)
+			min = abs(*it - *it1);
+			for (it2 = it; it2 != span.end(); it1++, it2++) 
+				if (static_cast<unsigned int>(abs(*it2 - *it1)) < min)
 					min = abs(*it2 - *it1);
 			return (min);
 		}
