@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:29 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/23 02:46:01 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/24 09:48:17 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 Span::Span() : _size(0) {
 }
 
-Span::Span(unsigned int size) : _size(size) {
+Span::Span(unsigned int size) : _size(size){
 }
 
 Span::Span( const Span & src ) {
@@ -84,46 +84,58 @@ void						Span::fillSpan(std::vector<int>::const_iterator it1, std::vector<int>:
 }
 
 void						Span::addNumber(int num) {
-	if (this->_span.size() < this->_size) {
-		std::cout << "num: " << num << std::endl;
-		this->_span.push_back(num);
+	try {
+		if (this->_span.size() < this->_size) {
+			std::cout << "num: " << num << std::endl;
+			this->_span.push_back(num);
+		}
+		else
+			throw Span::IsFullException();
+	} catch (IsFullException& e) {
+		std::cout << e.what() << std::endl;
 	}
-	else
-		throw Span::IsFullException();
 }
 
 unsigned int 		Span::shortestSpan() {
-	if (this->_span.size() >= 2) {
-		unsigned int		min = 0;
-		std::vector<int> span = this->_span;
-		std::sort(span.begin(), span.end());
-		std::vector<int>::iterator it1 = span.begin();
-		std::vector<int>::iterator it2 = it1;
-		it2++;
-		min = abs(*it2 - *it1);
-		while (it2 != span.end()) {
-			if (abs(*it2 - *it1) < min)
-				min = abs(*it2 - *it1);
-			it1++;
-			it2++;
+	try {
+		if (this->_span.size() >= 2) {
+			unsigned int		min = 0;
+			std::vector<int> span = this->_span;
+			std::sort(span.begin(), span.end());
+			std::vector<int>::iterator it2 = span.begin();
+			std::vector<int>::iterator it1 = it2++;
+			
+			min = abs(*it2 - *it1);
+			for (it2 = it2; it2 != span.end(); it1++, it2++) 
+				if (abs(*it2 - *it1) < min)
+					min = abs(*it2 - *it1);
+			return (min);
 		}
- 		return (min);
+		else
+			throw Span::NotEnoughElementsException();
+	} catch (NotEnoughElementsException &e) {
+		std::cout << e.what() << std::endl;
+		return (0);
 	}
-	else
-		throw Span::NotEnoughElementsException();
 }
 
 unsigned int 		Span::longestSpan() {
-	if (this->_span.size() >= 2) {
-		std::vector<int> span = this->_span;
-		std::sort(span.begin(), span.end());
-		std::vector<int>::iterator it1 = span.begin();
-		std::vector<int>::iterator it2 = span.end();
-		it2--;
-		return (abs(*it2 - *it1));
-	}
-	else
+	try {
+		if (this->_span.size() >= 2) {
+			std::vector<int> span = this->_span;
+			std::sort(span.begin(), span.end());
+			std::vector<int>::iterator it1 = span.begin();
+			std::vector<int>::iterator it2 = span.end();
+			it2--;
+			return (abs(*it2 - *it1));
+		}
+		else
 		throw Span::NotEnoughElementsException();
+	} catch (NotEnoughElementsException &e) {
+		std::cout << e.what() << std::endl;
+		return (0);
+	}
+	
 }
 
 const char *	Span::IsFullException::what() const throw() {

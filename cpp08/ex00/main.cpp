@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 00:56:47 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/22 12:34:45 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/24 08:49:57 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int main () {
   printAll< std::list<int> >(list);
   deleteAllOccurance< std::list<int> >(list, m);
   printAll< std::list<int> >(list);
+  
   std::cout << std::endl << "------------------- Vector -------------------" << std::endl;
   vector.push_back(5);
   vector.push_back(15);

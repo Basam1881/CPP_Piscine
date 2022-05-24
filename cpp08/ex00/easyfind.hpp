@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 00:35:41 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/22 12:33:48 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/24 09:10:17 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@
 # include <iostream>
 # include <string>
 # include <iterator>
+# include <algorithm>
 
 template <typename T>
 typename T::iterator	easyfind(T & x, int & y) {
-  typename T::iterator    it;
-  for (it = x.begin(); it != x.end(); it++) {
-    if (*it == y)
-      return (it);
-  }
-  return (x.end());
+  return (find(x.begin(), x.end(), y));
 }
 
 #endif /* ******************************************************** EASYFIND_HPP */
