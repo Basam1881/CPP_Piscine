@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 17:16:18 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/23 23:31:27 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/24 20:28:34 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ class Array
 
 	public:
 
-		Array() : _arr(NULL), _size(1) {
-			this->_arr = new T[1];
+		Array() : _arr(NULL), _size(0) {
 		}
 		Array(unsigned int n) : _arr(NULL), _size(n) {
 			this->_arr = new T[n];

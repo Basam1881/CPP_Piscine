@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:37 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/24 15:45:56 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/25 00:40:02 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Span
 
 		void						addNumber(int num);
 		void						fillSpan(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2);
+		void						fillSpan(unsigned int len, int num);
 		unsigned int 		shortestSpan();
 		unsigned int 		longestSpan();
 

@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/15 22:34:42 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/16 12:48:42 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/25 01:01:32 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,7 @@ Dog::Dog()
 
 Dog::Dog( const Dog & src ) : AAnimal(src)
 {	
-	this->_type = src.getType();
-	this->_brain = new Brain();
-	for (int i = 0; i < 100; i++) {
-		if (src.getBrain()->getIdea(i).empty())
-			break ;
-		this->_brain->setIdea(src.getBrain()->getIdea(i), i);
-	}
+	*this = src;
 	std::cout << this->_type << " is created as " << this->_type << std::endl;
 }
 
@@ -56,6 +50,12 @@ Dog &				Dog::operator=( Dog const & rhs )
 	if ( this != &rhs )
 	{
 		this->_type = rhs.getType();
+		this->_brain = new Brain();
+		for (int i = 0; i < 100; i++) {
+			if (rhs.getBrain()->getIdea(i).empty())
+				break ;
+			this->_brain->setIdea(rhs.getBrain()->getIdea(i), i);
+		}
 	}
 	return *this;
 }

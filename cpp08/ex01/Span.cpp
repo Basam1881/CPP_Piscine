@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bnaji <bnaji@student.42abudhabi.ae>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/22 12:47:29 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/24 17:42:40 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/05/25 00:49:29 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ Span &				Span::operator=( Span const & rhs )
 
 std::ostream &			operator<<( std::ostream & o, Span const & i )
 {
-	o << "[ ";
+	o << "[" << i.getSize() << "]: [";
   std::vector<int>::const_iterator it;
   for (it = i.getSpan().begin(); it != i.getSpan().end(); it++) {
     o << *(it);
@@ -72,13 +72,15 @@ std::ostream &			operator<<( std::ostream & o, Span const & i )
 
 void						Span::fillSpan(std::vector<int>::const_iterator it1, std::vector<int>::const_iterator it2) {
 	while (it1 != it2) {
-		try {
 			this->addNumber(*it1);
 			it1++;
-		}
-		catch (Span::IsFullException & e) {
-			break ;
-		}
+	}	
+}
+
+void						Span::fillSpan(unsigned int len, int num) {
+	unsigned int i = 0;
+	while (i++ < len) {
+			this->addNumber(num);
 	}	
 }
 
