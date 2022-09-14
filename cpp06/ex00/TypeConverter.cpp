@@ -6,7 +6,7 @@
 /*   By: bnaji <bnaji@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 18:58:16 by bnaji             #+#    #+#             */
-/*   Updated: 2022/05/23 11:01:07 by bnaji            ###   ########.fr       */
+/*   Updated: 2022/09/14 11:58:02 by bnaji            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 */
 
 TypeConverter::TypeConverter() : _cval('\0'), _ival(0), _fval(0.0f), _dval(0.0), _str(""), _undifined(false), _posInf(false),
-	_negInf(false), _strCnt(0), _orgVal('\0'), _isFractional(false), _allConverted(false) {
+	_negInf(false), _strCnt(0), _orgVal('\0'), _isFractional(false), _allConverted(false), _isConvertedToChar(false), _isConvertedToInt(false) {
 }
 
 TypeConverter::TypeConverter(std::string str) : _cval('\0'), _ival(0), _fval(0.0f), _dval(0.0), _str(str), _undifined(false), _posInf(false),
- _negInf(false), _strCnt(0), _orgVal('\0'), _isFractional(false), _allConverted(false) {
+ _negInf(false), _strCnt(0), _orgVal('\0'), _isFractional(false), _allConverted(false), _isConvertedToChar(false), _isConvertedToInt(false) {
 }
 
 TypeConverter::TypeConverter( const TypeConverter & src ) {
@@ -56,6 +56,8 @@ TypeConverter &				TypeConverter::operator=( TypeConverter const & rhs )
 		this->_orgVal = rhs.getOrgVal();
 		this->_isFractional = rhs.getIsFractional();
 		this->_allConverted = rhs.getAllConverted();
+		this->_isConvertedToChar = rhs._isConvertedToChar;
+		this->_isConvertedToInt = rhs._isConvertedToInt;
 	}
 	return *this;
 }
@@ -82,9 +84,9 @@ void				TypeConverter::displayChar(std::ostream & o) {
 	if (!this->getOrgVal() || !this->getAllConverted())
 		return ;
 	o << "char = ";
-	if (this->getOrgVal() == 's' || (this->getIsFractional()))
+	if (this->getOrgVal() == 's' || (this->getIsFractional()) || this->_ival < 0)
 		o << "Impossible" << std::endl;
-	else if (this->getCharVal() < 33 || this->getCharVal() > 126)
+	else if (this->getCharVal() < 33 || this->getCharVal() > 126 || this->_ival < 0)
 		o << "Non displayable" << std::endl;
 	else
 		o << "'" << this->getCharVal() << "'" <<  std::endl;
@@ -94,7 +96,7 @@ void				TypeConverter::displayInt(std::ostream & o) {
 	if (!this->getOrgVal() || !this->getAllConverted())
 		return ;
 	o << "int = ";
-	if (this->getOrgVal() == 's')
+	if (this->getOrgVal() == 's' || !this->_isConvertedToInt)
 		o << "Impossible" << std::endl;
 	else
 		o << this->getIntVal() << std::endl;
@@ -169,8 +171,13 @@ bool				TypeConverter::_isSpecial(std::string str) {
 bool				TypeConverter::_isInt(std::string str) {
 	if (str.length() == static_cast<long unsigned int>(this->_strCnt)) {
 		std::stringstream s(str);
-		s >> this->_ival;
+    long int tmp;
+    s >> tmp;
+    if (tmp > INT_MAX || tmp < INT_MIN)
+      return false;
+    this->_ival = static_cast<int>(tmp);
 		this->_orgVal = 'i';
+    this->_isConvertedToInt = true;
 		return true;
 	}
 	return false;
@@ -179,8 +186,7 @@ bool				TypeConverter::_isInt(std::string str) {
 bool				TypeConverter::_isFloat(std::string str) {
 	if (str.length() == static_cast<long unsigned int>(this->_strCnt) + 1 && str[this->_strCnt] == 'f') {
 		str.erase(str.end() - 1);
-		std::stringstream s(str);
-		s >> this->_fval;
+		this->_fval = atof(str.c_str());
 		if (this->_fval != static_cast<int>(this->_fval))
 			this->_isFractional = true;
 		this->_orgVal = 'f';
@@ -191,8 +197,7 @@ bool				TypeConverter::_isFloat(std::string str) {
 
 bool				TypeConverter::_isDouble(std::string str) {
 	if (str.length() == static_cast<long unsigned int>(this->_strCnt)) {
-		std::stringstream s(str);
-		s >> this->_dval;
+    this->_dval = atof(str.c_str());
 		if (this->_dval != static_cast<int>(this->_dval))
 			this->_isFractional = true;
 		this->_orgVal = 'd';
@@ -201,50 +206,50 @@ bool				TypeConverter::_isDouble(std::string str) {
 	return false;
 }
 
+int         TypeConverter::checkNumbers(std::string str) {
+  if (this->_isSpecial(str))
+    return 5;
+  if (str[0] == '+' || str[0] == '-')
+    this->_strCnt++;
+  while (std::isdigit(str[this->_strCnt]))
+    this->_strCnt++;
+  if (this->_isInt(str))
+    return 2;
+  else if (str[this->_strCnt] != '.')
+    return 0;
+  else
+    return checkAfterDot(str);
+}
+
+int         TypeConverter::checkAfterDot(std::string str) {
+  if (!std::isdigit(str[this->_strCnt - 1]) && !std::isdigit(str[this->_strCnt + 1]))
+    return 0;
+  this->_strCnt++;
+  while (std::isdigit(str[this->_strCnt]))
+    this->_strCnt++;
+  return this->_isDouble(str) ? 4 : this->_isFloat(str) ? 3 : 0;
+}
+
 int					TypeConverter::storeActualType(std::string str) {
 	if (this->_str.empty())
 		return 0;
 	if (this->_isChar(str))
 		return 1;
-	else {
-		if (this->_isSpecial(str))
-			return 5;
-		if (str[0] == '+' || str[0] == '-')
-			this->_strCnt++;
-		int prevCnt = this->_strCnt;
-		while (str[this->_strCnt] >= '0' && str[this->_strCnt] <= '9')
-			this->_strCnt++;
-		if (this->_strCnt == prevCnt)
-			return 0;
-		if (this->_isInt(str))
-			return 2;
-		else if (str[this->_strCnt] != '.') {
-			return 0;
-		}
-		else {
-			prevCnt = ++this->_strCnt;
-			while (str[this->_strCnt] >= '0' && str[this->_strCnt] <= '9')
-				this->_strCnt++;
-			if (this->_strCnt == prevCnt)
-				return 0;
-			else if (this->_isDouble(str))
-				return 4;
-			else if (this->_isFloat(str))
-				return 3;
-		}
-	}
+	else
+    return checkNumbers(str);
 	return 0;
 }
 
-void	TypeConverter::char2all() {
+void	TypeConverter::_char2all() {
 	if (this->_orgVal == 'c') {
 		this->_ival = static_cast<int>(this->_cval);
+    this->_isConvertedToInt = true;
 		this->_fval = static_cast<float>(this->_cval);
 		this->_dval = static_cast<double>(this->_cval);
 		this->_allConverted = true;
 	}
 }
-void	TypeConverter::int2all() {
+void	TypeConverter::_int2all() {
 	if (this->_orgVal == 'i') {
 		if (this->_ival > 32 && this->_ival < 127)
 			this->_cval = static_cast<char>(this->_ival);
@@ -253,30 +258,36 @@ void	TypeConverter::int2all() {
 		this->_allConverted = true;
 	}
 }
-void	TypeConverter::float2all() {
+void	TypeConverter::_float2all() {
 	if (this->_orgVal == 'f') {
 		if (!this->_isFractional && this->_fval > 32 && this->_fval < 127)
 			this->_cval = static_cast<char>(this->_fval);
-		this->_ival = static_cast<int>(this->_fval);
+    if (this->_fval < INT_MAX && this->_fval > INT_MIN) {
+		  this->_ival = static_cast<int>(this->_fval);
+      this->_isConvertedToInt = true;
+    }
 		this->_dval = static_cast<double>(this->_fval);
 		this->_allConverted = true;
 	}
 }
-void	TypeConverter::double2all() {
+void	TypeConverter::_double2all() {
 	if (this->_orgVal == 'd') {
 		if (!this->_isFractional && this->_dval > 32 && this->_dval < 127)
 			this->_cval = static_cast<char>(this->_dval);
-		this->_ival = static_cast<int>(this->_dval);
+    if (this->_dval < INT_MAX && this->_dval > INT_MIN) {
+  		this->_ival = static_cast<int>(this->_dval);
+      this->_isConvertedToInt = true;
+    }
 		this->_fval = static_cast<double>(this->_dval);
 		this->_allConverted = true;
 	}
 }
 
 void				TypeConverter::convert2all() {
-	this->char2all();
-	this->int2all();
-	this->float2all();
-	this->double2all();
+	this->_char2all();
+	this->_int2all();
+	this->_float2all();
+	this->_double2all();
 }
 
 /*
